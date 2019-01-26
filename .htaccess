@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteBase /hrm/
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ index.php/$1 [L]
+        #RewriteRule ^(.+)$ /index.php [L]
+</IfModule>
+
+# <IfModule mod_rewrite.c>
+#        RewriteEngine On
+#
+#        # Removes index.php
+#        RewriteCond $1 !\.(gif|jpe?g|png)$ [NC]
+#        RewriteCond %{REQUEST_FILENAME} !-f
+#        RewriteCond %{REQUEST_FILENAME} !-d
+#        RewriteRule ^(.*)$ /index.php?/$1 [L]
+#
+#        # If 404s, "No Input File" or every URL returns the same thing
+#        # make it /index.php?/$1 above (add the question mark)
+#        
+#</IfModule>  
+# Use PHP70 as default
+AddHandler application/x-httpd-php70 .php
+<IfModule mod_suphp.c>
+    suPHP_ConfigPath /opt/php70/lib
+</IfModule>
